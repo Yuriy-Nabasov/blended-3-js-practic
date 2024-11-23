@@ -233,3 +233,265 @@
 // }
 
 // console.log(checkStorage(["apple", "plum", "pear"], "pLuM"));
+
+//! 23-11-2024
+
+// const a = [24, 18];
+// const b = [24, 18];
+
+// const c = {
+//   d: 21,
+//   e: 34,
+// };
+
+// c[a] = "Hellow world";
+// c[b] = 21;
+
+// console.log(c);
+
+//? Напишіть функцію, яка створює масив з вказаною довжиною і заповнює його вказанним значення.
+//? Наприклад функція fillArray(3, 'a') повертає масив ['a', 'a', 'a'].
+
+// function fillArray(lengthArray, simbol) {
+//   const newArray = [];
+//   for (let i = 0; i < lengthArray; i++) {
+//     newArray.push(simbol);
+//   }
+//   return newArray;
+// }
+
+// console.log(fillArray(8, `b`));
+
+//? Написати функцію clearArray(array), котра створить новий масив
+//? в якому не буде значень, які приводяться до false
+
+// const array = [
+//   1,
+//   0,
+//   54,
+//   "doc",
+//   null,
+//   "jpg",
+//   undefined,
+//   "",
+//   "png",
+//   "exe",
+//   false,
+//   "mp4",
+//   NaN,
+//   "hbs",
+// ];
+
+// const clearArray = function (arr) {
+//   const resultArr = [];
+//   for (const el of arr) {
+//     if (el) {
+//       resultArr.push(el);
+//     }
+//   }
+//   return resultArr;
+// };
+
+// console.log(clearArray(array));
+
+//? Напиши скрипт, який порівняє два масива і виведе у консоль результат:
+//? true - якщо всі елементи однакові і false - в іншому випадку
+
+// const arr1 = [1, 4, 6, "color", 324, 232, "list", 11, 9, "dream", 34, 0, -30];
+// const arr2 = [6, "dream", -30, 11, 9, 1, 324, 34, "color", 4, 232, 0, "list"];
+
+// const arr3 = [4, 232, 6, -30, "color", 324, "list", 1, 11, 9, "dream", 34, 0];
+// const arr4 = ["color", 6, -30, 11, 9, 1, "dream", 324, 34, 4, 232, 0, "list"];
+
+// const arr5 = [1, 4, 6, "color", "list", 11, 9, "dream", 34, 0, -30, "lesson"];
+// const arr6 = [6, 324, "dream", -30, 9, 8, 34, "color", 4, 232, 0, "list", 11];
+
+// const arr7 = [1, 4, 6, "color", 324, 232, "list", 11, 9, "dream", 34, 0, -30];
+// const arr8 = [6, "dream", -30, 10, 9, 1, 324, 34, "color", 4, 232, 0, "list"];
+
+// const compireArrays = function (firstArr, secondArr) {
+//   if (firstArr.length !== secondArr.length) {
+//     return false;
+//   }
+//   for (const el of firstArr) {
+//     if (!secondArr.includes(el)) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+
+// console.log(compireArrays(arr1, arr2));
+// console.log(compireArrays(arr3, arr4));
+// console.log(compireArrays(arr5, arr6));
+// console.log(compireArrays(arr7, arr8));
+
+//? Напишіть функцію calculateAverage()
+//? яка приймає довільну кількість
+//? аргументів і повертає їхнє середнє значення.
+//? Додати перевірку, що аргументи це числа.
+
+// const calculateArg = function calculateAverage(...arrgs) {
+//   let sum = 0;
+//   let total = 0;
+//   for (const arrg of arrgs) {
+//     if (typeof arrg === `number`) {
+//       total += 1;
+//       sum += arrg;
+//     }
+//   }
+//   return sum / total;
+// };
+
+// console.log(calculateArg(12, 42, `aaaa`, 14));
+
+//? Для об'єкту book, послідовно виконай наступні дії:
+//? 1. Додай поле rating зі значенням 4.8.
+//? 2. Заміни значення поля genre на "Classic Fiction".
+//? 3. Заміни значення поля isBestseller на false.
+//? 4. Виведи за допомогою console.log вміст об'єкта book
+//?    у форматі ключ:значення,
+//?    використовуючи Object.keys() і for...of.
+
+//! Очікуваний результат
+//* title: To Kill a Mockingbird
+//* author: Harper Lee
+//* genre: Classic Fiction
+//* yearPublished: 1960
+//* isBestseller: false
+//* rating:
+
+// const book = {
+//   title: "To Kill a Mockingbird",
+//   author: "Harper Lee",
+//   genre: "Southern Gothic",
+//   yearPublished: 1960,
+//   isBestseller: true,
+// };
+
+// book.rating = 4.8;
+// book.genre = `Classic Fiction`;
+// book.isBestseller = false;
+
+// console.log(book);
+
+// const keys = Object.keys(book);
+// for (const item of keys) {
+//   console.log(`${item}: ${book[item]}`);
+// }
+
+//? Напишіть функцію checkKeyInObject(), яка приймає 2 параметри obj і key.
+//? Функція буде перебирати об'єкт.
+//? Якщо об'єкт має такий ключ - поверне true, в іншому випадку - false.
+
+// const user = {
+//   name: "Igor",
+//   car: "Mercedes",
+//   carColor: "black",
+// };
+
+// const checkKeyInObject = function (obj, key) {
+//   for (const obgKey in obj) {
+//     if (obgKey === key) {
+//       return true;
+//     }
+//   }
+//   return false; //! або   return Object.keys(obj).includes(key);
+// };
+
+// console.log(checkKeyInObject(user, `name`));
+// console.log(checkKeyInObject(user, `subname`));
+
+//? Є об'єкт, у якому зберігаються обрані товари у кошику.
+//? Напишіть код для визначення загальної суму замовлення
+//? і збережіть його результат у змінній totalCost.
+//? Якщо об'єкт cart порожній, то результат має бути 0.
+
+// const cart = {
+//   apple: 50,
+//   banana: 30,
+//   orange: 40,
+// };
+// let totalCost = 0;
+// for (const item in cart) {
+//   totalCost += cart[item];
+// } //! abo for (const item of Object.values(cart)) {totalCost += item;}
+
+// console.log(totalCost);
+
+//? Додати метод getinfo в об'єкт user, який повертатиме інформацію
+//? про користувача у форматі:
+//? `Name: Peter. Surname: Parker. Age: 22. Position: spider-man.`
+
+// const user = {
+//   name: "Peter",
+//   surname: "Parker",
+//   age: 22,
+//   position: "spider-man",
+// };
+
+// user.getinfo = function () {
+//   return `Name: ${this.name}. Surname: ${this.surname}. Age: ${this.age}. Position: ${this.position}.`;
+// };
+
+// console.log(user.getinfo());
+
+//? Створіть об'єкт calculator із трьома методами:
+//? read(a, b) - приймає два аргументи та зберігає їх як властивості об'єкта
+//? sum() - повертає суму збережених значень
+//? mult() - перемножує збережені значення та повертає результат
+
+// const calculator = {
+//   read(a, b) {
+//     this.value1 = a;
+//     this.value2 = b;
+//   },
+//   sum() {
+//     return this.value1 + this.value2;
+//   },
+//   mult() {
+//     return this.value1 * this.value2;
+//   },
+// };
+
+// calculator.read(5, 15);
+// console.log(calculator);
+// console.log(calculator.sum());
+// console.log(calculator.mult());
+
+//? Розрахувати загальну суму всіх замовлень та вивести інформацію у форматі:
+//? `Загальна сума всіх замовлень: totalAmount`
+
+// const orders = [
+//   { id: 1, product: "Футболка", quantity: 2, price: 15 },
+//   { id: 2, product: "Шорти", quantity: 3, price: 20 },
+//   { id: 3, product: "Кросівки", quantity: 1, price: 50 },
+// ];
+
+// let totalAmount = 0;
+
+// for (const order of orders) {
+//   totalAmount += order.quantity * order.price;
+// }
+
+// console.log(totalAmount);
+
+//? Знайти студента з найменшим віком та вивести інформацію про нього у форматі:
+//? `Студент з найменшим віком: name, Вік: age, Спеціальність: major`
+
+// const students = [
+//   { name: "Олександр", age: 20, major: "Інформатика" },
+//   { name: "Марія", age: 21, major: "Психологія" },
+//   { name: "Іван", age: 19, major: "Економіка" },
+// ];
+
+// let yangerStudent = students[0];
+// for (const student of students) {
+//   if (yangerStudent.age > student.age) {
+//     yangerStudent = student;
+//   }
+// }
+
+// console.log(
+//   `Студент з найменшим віком: ${yangerStudent.name}, Вік: ${yangerStudent.age}, Спеціальність: ${yangerStudent.major}`
+// );

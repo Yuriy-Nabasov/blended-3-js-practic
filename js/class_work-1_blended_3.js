@@ -740,3 +740,143 @@
 
 // clientIvan.email = `newivan@gmail.com`;
 // console.log(clientIvan.email);
+
+//! 21-12-2024
+//? При натисканні на кнопку "Приховати" потрібно введені користувачем
+//? символи в інпут відображати у вигляді крапок замість звичайного
+//? тексту, а також змінити назву кнопки на "Показати", при повторному
+//? натисканні знову будемо відображати символи, а назва кнопки зміниться
+//? на "Приховати".
+
+// // 1й етап - Вставляемо розмітку в html
+
+// const markapHtmlTemplate = document.getElementById(`body_container`);
+// markapHtmlTemplate.innerHTML = `
+//     <input id="passwordInput" type="text" />
+//     <button id="passwordButton">Приховати</button>`;
+
+// // 2й етап - реалізуємо завдання
+
+// const inputEl = document.querySelector(`#passwordInput`);
+// console.dir(inputEl);
+// const butEl = document.querySelector(`#passwordButton`);
+// console.dir(butEl);
+// butEl.addEventListener(`click`, (event) => {
+//   if (inputEl.type === `text`) {
+//     inputEl.type = `password`;
+//     event.target.textContent = `Показати`;
+//   } else {
+//     inputEl.type = `text`;
+//     event.target.textContent = `Приховати`;
+//   }
+// });
+
+//? При кліку на кнопку "Подвоїти" збільшувати значення в кожному
+//? елементі списку в два рази.
+
+// // 1й етап - Вставляемо розмітку в html
+
+// const markapHtmlTemplate = document.getElementById(`body_container`);
+// markapHtmlTemplate.innerHTML = `
+//     <ul class="list">
+//       <li class="listItem">1</li>
+//       <li class="listItem">4</li>
+//       <li class="listItem">8</li>
+//       <li class="listItem">16</li>
+//       <li class="listItem">20</li>
+//       <li class="listItem">30</li>
+//     </ul>
+//     <button id="double">Подвоїти</button>`;
+
+// // 2й етап - реалізуємо завдання
+
+// const butEl = document.querySelector(`#double`);
+// console.dir(butEl);
+
+// const liItems = document.querySelectorAll(`.listItem`);
+// console.log(liItems);
+
+// butEl.addEventListener(`click`, () => {
+//   liItems.forEach((el) => (el.textContent = el.textContent * 2));
+// });
+
+//? При кліку на кнопку "Filter" потрібно видалити з списку позначені елементи.
+
+// // 1й етап - Вставляемо розмітку в html
+// const markapHtmlTemplate = document.getElementById(`body_container`);
+// markapHtmlTemplate.innerHTML = `
+//   <form class="checkboxForm">
+//       <div class="checkboxList">
+//         <div class="checkboxWrapper">
+//           <label for="checkbox1">Item 1</label>
+//           <input type="checkbox" id="checkbox1" />
+//         </div>
+
+//         <div class="checkboxWrapper">
+//           <label for="checkbox2">Item 2</label>
+//           <input type="checkbox" id="checkbox2" />
+//         </div>
+//         <div class="checkboxWrapper">
+//           <label for="checkbox3">Item 3</label>
+//           <input type="checkbox" id="checkbox3" />
+//         </div>
+//         <div class="checkboxWrapper">
+//           <label for="checkbox4">Item 4</label>
+//           <input type="checkbox" id="checkbox4" />
+//         </div>
+//         <div class="checkboxWrapper">
+//           <label for="checkbox5">Item 5</label>
+//           <input type="checkbox" id="checkbox5" />
+//         </div>
+//         <div class="checkboxWrapper">
+//           <label for="checkbox6">Item 6</label>
+//           <input type="checkbox" id="checkbox6" />
+//         </div>
+//         <div class="checkboxWrapper">
+//           <label for="checkbox7">Item 7</label>
+//           <input type="checkbox" id="checkbox7" />
+//         </div>
+//       </div>
+//       <button type="submit">Filter</button>
+//     </form>
+//     `;
+
+// // 2й етап - реалізуємо завдання
+// const formEl = document.querySelector(`.checkboxForm`);
+// console.dir(formEl);
+// const list = document.querySelectorAll(`.checkboxWrapper`);
+// console.log(list);
+// formEl.addEventListener(`submit`, (event) => {
+//   event.preventDefault();
+//   const filterList = [...list].filter((el) => el.lastElementChild.checked);
+//   filterList.forEach((el) => el.remove());
+// });
+
+//? Наведено список людей. Зроби можливість фільтрації (пошуку) за ім'ям або за прізвищем.
+
+// // 1й етап - Вставляемо розмітку в html
+// const markapHtmlTemplate = document.getElementById(`body_container`);
+// markapHtmlTemplate.innerHTML = `
+//     <input class="contactsFilter" type="text" />
+//     <ul class="contacts">
+//       <li class="contact">Peter Miller</li>
+//       <li class="contact">John Carter</li>
+//       <li class="contact">Amanda Diaz</li>
+//       <li class="contact">Brad Sanders</li>
+//       <li class="contact">Devis Brooks</li>
+//       <li class="contact">Robert Morgan</li>
+//     </ul>
+// `;
+
+// // 2й етап - фільтруємо список
+// const inputEl = document.querySelector(`.contactsFilter`);
+// const ulEl = document.querySelector(`.contacts`);
+// const items = [...ulEl.children];
+// inputEl.addEventListener(`input`, (event) => {
+//   const valueEl = event.target.value.toLowerCase().trim();
+//   const filterItems = items.filter((el) =>
+//     el.textContent.toLowerCase().includes(valueEl)
+//   );
+//   ulEl.innerHTML = ``;
+//   ulEl.append(...filterItems);
+// });

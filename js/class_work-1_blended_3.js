@@ -854,7 +854,7 @@
 
 //? Наведено список людей. Зроби можливість фільтрації (пошуку) за ім'ям або за прізвищем.
 
-// // 1й етап - Вставляемо розмітку в html
+// 1й етап - Вставляемо розмітку в html
 // const markapHtmlTemplate = document.getElementById(`body_container`);
 // markapHtmlTemplate.innerHTML = `
 //     <input class="contactsFilter" type="text" />
@@ -868,7 +868,7 @@
 //     </ul>
 // `;
 
-// // 2й етап - фільтруємо список
+// 2й етап - фільтруємо список
 // const inputEl = document.querySelector(`.contactsFilter`);
 // const ulEl = document.querySelector(`.contacts`);
 // const items = [...ulEl.children];
@@ -880,3 +880,191 @@
 //   ulEl.innerHTML = ``;
 //   ulEl.append(...filterItems);
 // });
+
+//! 11-01-2025
+// Додай функціонал зміни теми при натисканні(подія change) на чекбокс
+// #theme-switch-toggle у тулбарі.
+
+// За замовчуванням тема світла.
+// При зміні теми необхідно додавати на елемент body клас light-theme або dark-theme.
+// Вибрана тема повинна зберігатись між перезавантаженнями сторінки.
+// Для зберігання теми використовуй localStorage.
+// Якщо при завантаженні сторінки тема темна, не забудь поставити властивість checked
+// у чекбоксу #theme -switch-toggle у true, щоб повзунок зрушив у правильне положення.
+
+// Для зручності зберігання списку використовуй такий перелік.
+
+// const Theme = {
+//   LIGHT: "light-theme",
+//   DARK: "dark-theme",
+// };
+
+// const themeSwitchInputEl = document.querySelector(".theme-switch__toggle");
+
+// // console.log(themeSwitchInputEl);
+
+// const bodyEl = document.body;
+
+// // console.log(bodyEl);
+
+// const seveTheme = localStorage.getItem("Theme");
+
+// console.log(seveTheme);
+
+// if (seveTheme) {
+//   bodyEl.classList.add(seveTheme);
+// } else {
+//   bodyEl.classList.add(Theme.LIGHT);
+// }
+
+// if (seveTheme === Theme.DARK) {
+//   themeSwitchInputEl.checked = true;
+// }
+
+// const onInputChangeFn = (event) => {
+//   if (themeSwitchInputEl.checked) {
+//     bodyEl.classList.add(Theme.DARK);
+
+//     bodyEl.classList.remove(Theme.LIGHT);
+
+//     localStorage.setItem("Theme", Theme.DARK);
+//   } else {
+//     bodyEl.classList.add(Theme.LIGHT);
+
+//     bodyEl.classList.remove(Theme.DARK);
+
+//     localStorage.setItem("Theme", Theme.LIGHT);
+//   }
+
+//   // console.dir(themeSwitchInputEl);
+// };
+
+// themeSwitchInputEl.addEventListener("change", onInputChangeFn);
+
+// ?
+// * Якщо імейл і пароль користувача збігаються, при сабміті зберігай дані з форми
+// * у локальне сховище і змінюй кнопку login на logout і роби поля введення
+// * Недоступними для зміни.
+// * При перезавантаженні сторінки, якщо користувач залогінений, ми повинні бачити logout-кнопку
+// * та недоступні для зміни поля з даними користувача.
+// * Клік по кнопці logout повертає все в початковий вигляд і видаляє дані користувача
+// * З локального сховища.
+// *
+// * Якщо введені дані не збігаються з потрібними даними, викликати аlert і
+// * повідомляти про помилку.
+
+// const user = {
+//   email: `test@gmail.com`,
+//   password: `test`,
+// };
+
+// const formEl = document.querySelector(`#login-form`);
+// // console.dir(formEl);
+
+// const data = JSON.parse(localStorage.getItem(`userData`));
+// // console.log(data);
+// if (data) {
+//   formEl.elements.email.disabled = true;
+//   formEl.elements.password.disabled = true;
+//   formEl.elements.button.textContent = `logout`;
+//   formEl.elements.email.value = data.email;
+//   formEl.elements.password.value = data.password;
+// }
+
+// const formSubmit = (event) => {
+//   event.preventDefault();
+//   if (JSON.parse(localStorage.getItem(`userData`))) {
+//     formEl.elements.email.disabled = false;
+//     formEl.elements.password.disabled = false;
+//     formEl.elements.button.textContent = `login`;
+//     localStorage.removeItem(`userData`);
+//     formEl.reset();
+//     return;
+//   }
+
+//   if (
+//     formEl.elements.email.value !== user.email ||
+//     formEl.elements.password.value !== user.password
+//   ) {
+//     alert(`Не корректно введені данні!`);
+//     return;
+//   }
+//   const data = {
+//     email: formEl.elements.email.value,
+//     password: formEl.elements.password.value,
+//   };
+//   //   console.log(data);
+//   localStorage.setItem(`userData`, JSON.stringify(data));
+//   formEl.elements.email.disabled = true;
+//   formEl.elements.password.disabled = true;
+//   formEl.elements.button.textContent = `logout`;
+// };
+
+// formEl.addEventListener(`submit`, formSubmit);
+
+// ?
+// За допомогою prompt запропонуйте користувачу ввести значення.
+// Створіть функцію checkValue(value), котра повертає Promise
+// Якщо введене користувачем значення не є числом, потрібно відхилити проміс і логувати 'error'
+// Якщо введене користувачем значення є число і воно парне, розв'язуй проміс і повертай 'even'
+// через 1 секунду.
+// Якщо введене користувачем значення є число і воно не парне, розв'язуй проміс і повертай 'odd'
+// через 2 секунди.
+
+// const value = prompt("Введіть число");
+
+// // console.log(value);
+
+// const checkValue = (value) => {
+//   return new Promise((resolve, reject) => {
+//     if (!isNaN(value)) {
+//       value % 2 === 0
+//         ? setTimeout(() => resolve("even"), 1000)
+//         : setTimeout(() => resolve("odd"), 2000);
+//     } else {
+//       reject("error");
+//     }
+//   });
+// };
+
+// checkValue(value)
+//   .then((succesValue) => console.log(succesValue))
+//   .catch((error) => console.log(error));
+
+// ?
+// Потрібно створити функцію sumArray, яка приймає масив чисел.
+// Функція повинна повернути проміс, який виконується зі сумою
+// всіх чисел у масиві.Проте, якщо масив містить хоча б одне
+// нечислове значення, проміс повинен бути відхилений з
+// повідомленням про помилку "Масив містить нечислові значення".
+
+// const numbers1 = [1, 2, 3, 4, 5];
+// const numbers2 = [1, 2, "three", 4, 5]; // Додано нечислове значення 'three'
+
+// const sumArray = (arr) => {
+//   return new Promise((resolve, reject) => {
+//     const value = arr.some((elArr) => isNaN(elArr));
+//     if (!value) {
+//       const sum = arr.reduce((acc, item) => acc + item, 0);
+//       resolve(sum);
+//     } else {
+//       reject("Масив містить нечислові значення");
+//     }
+//   });
+// };
+
+// sumArray(numbers2)
+//   .then((sumValue) => {
+//     console.log(`Сумма масиву ${sumValue}`);
+//   })
+//   .catch((errValue) => {
+//     console.log(errValue);
+//   });
+
+// ! 25-01-2025
+// Discovery API (https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-events-v2)
+// API_KEY = 'uHSLi07StIOlriMPxJGxUbSYsHDs6AFx';
+// Потрібно відрендерити колекцію  івентів і реалізувати пагінацію за допомогою бібліотеки
+// tui - pagination(https://www.npmjs.com/package/tui-pagination),
+// Запити робимо використовуючи бібліотеку axios (https://www.npmjs.com/package/axios , https://axios-http.com/uk/docs/intro)
+// і конструкції async\await; try\catch

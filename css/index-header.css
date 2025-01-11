@@ -1,0 +1,94 @@
+.container {
+  max-width: 1200px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-title {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.page-header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgb(192, 243, 52);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+  margin-bottom: 30px;
+  flex: 0 0 30%; /* Три елементи в рядку (приблизно 33%, але з відступами) */
+  text-align: center; /* Вирівнювання тексту в центрі */
+}
+
+.menu-link {
+  display: block;
+  padding: 10px 20px;
+  color: rgb(16, 12, 236);
+  border: 1px solid rgb(16, 12, 236);
+  border-radius: 6px;
+  transition: color 250ms linear, border-color 250ms linear;
+}
+
+.menu-link:hover,
+.menu-link:focus {
+  color: #ff6b0a;
+  border-color: #ff6b0a;
+}
+
+/* Основні стилі для меню */
+.main-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Перенос рядків */
+  justify-content: space-between; /* Розподіл елементів рівномірно */
+}
+
+.main-menu > li {
+  flex: 0 0 30%; /* Три елементи в рядку (приблизно 33%, але з відступами) */
+  text-align: center; /* Вирівнювання тексту в центрі */
+  margin-bottom: 20px; /* Відступ між рядками */
+}
+
+.main-menu > li > a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  display: block;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.main-menu > li > a:hover {
+  background-color: #ccc;
+}
+
+/* Стилі для вкладеного списку */
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.submenu li {
+  margin: 5px 0;
+}
+
+.submenu li a {
+  font-size: 16px;
+  color: #555;
+}
+
+.submenu li a:hover {
+  color: #000;
+}
